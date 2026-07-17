@@ -1,0 +1,120 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 4 items
+
+../tests/test_outputs.py FFFF                                            [100%]
+
+=================================== FAILURES ===================================
+_______________ test_criterion_1_report_exists_and_is_valid_json _______________
+
+    def test_criterion_1_report_exists_and_is_valid_json():
+        """instruction.md success criterion 1: /app/report.json exists and
+        contains valid JSON."""
+>       assert REPORT_PATH.exists(), "no report.json found at /app/report.json"
+E       AssertionError: no report.json found at /app/report.json
+E       assert False
+E        +  where False = exists()
+E        +    where exists = PosixPath('/app/report.json').exists
+
+/tests/test_outputs.py:40: AssertionError
+______________ test_criterion_2_schema_has_exactly_the_three_keys ______________
+
+    def test_criterion_2_schema_has_exactly_the_three_keys():
+        """instruction.md success criterion 2: the JSON object has exactly the
+        keys total_requests, unique_ips, and top_path — no extra, none missing."""
+>       data = json.loads(REPORT_PATH.read_text())
+                          ^^^^^^^^^^^^^^^^^^^^^^^
+
+/tests/test_outputs.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/local/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/app/report.json'), mode = 'r', buffering = -1
+encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/app/report.json'
+
+/usr/local/lib/python3.12/pathlib.py:1013: FileNotFoundError
+___________ test_criterion_3_total_requests_and_unique_ips_are_exact ___________
+
+    def test_criterion_3_total_requests_and_unique_ips_are_exact():
+        """instruction.md success criterion 3: total_requests and unique_ips
+        exactly match the true counts computed from /app/access.log."""
+>       data = json.loads(REPORT_PATH.read_text())
+                          ^^^^^^^^^^^^^^^^^^^^^^^
+
+/tests/test_outputs.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/local/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/app/report.json'), mode = 'r', buffering = -1
+encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/app/report.json'
+
+/usr/local/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_________________ test_criterion_4_top_path_is_a_correct_mode __________________
+
+    def test_criterion_4_top_path_is_a_correct_mode():
+        """instruction.md success criterion 4: top_path is a path whose request
+        count equals the maximum request count of any path (ties permitted)."""
+>       data = json.loads(REPORT_PATH.read_text())
+                          ^^^^^^^^^^^^^^^^^^^^^^^
+
+/tests/test_outputs.py:75: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/local/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/app/report.json'), mode = 'r', buffering = -1
+encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/app/report.json'
+
+/usr/local/lib/python3.12/pathlib.py:1013: FileNotFoundError
+=========================== short test summary info ============================
+FAILED ../tests/test_outputs.py::test_criterion_1_report_exists_and_is_valid_json
+FAILED ../tests/test_outputs.py::test_criterion_2_schema_has_exactly_the_three_keys
+FAILED ../tests/test_outputs.py::test_criterion_3_total_requests_and_unique_ips_are_exact
+FAILED ../tests/test_outputs.py::test_criterion_4_top_path_is_a_correct_mode
+============================== 4 failed in 0.19s ===============================

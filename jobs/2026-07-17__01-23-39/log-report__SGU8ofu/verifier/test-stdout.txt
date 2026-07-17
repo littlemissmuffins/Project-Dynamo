@@ -1,0 +1,15 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 4 items
+
+../tests/test_outputs.py ....                                            [100%]
+
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED ../tests/test_outputs.py::test_criterion_1_report_exists_and_is_valid_json
+PASSED ../tests/test_outputs.py::test_criterion_2_schema_has_exactly_the_three_keys
+PASSED ../tests/test_outputs.py::test_criterion_3_total_requests_and_unique_ips_are_exact
+PASSED ../tests/test_outputs.py::test_criterion_4_top_path_is_a_correct_mode
+============================== 4 passed in 0.02s ===============================

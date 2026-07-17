@@ -1,0 +1,92 @@
+Building Docker image harbor-prebuilt:harbor-docker-egress-control-sidecar--b1e6760734a9e6f6 from /usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/environments/docker/harbor-docker-egress-control-sidecar using /usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/environments/docker/harbor-docker-egress-control-sidecar/Dockerfile at 2026-07-17 00:49:43.949289+00:00
+Trial log-report__RzgrPcc failed: Docker compose command failed for environment log-report. Command: docker compose --project-name log-report__rzgrpcc__env --project-directory /workspaces/Project-Dynamo/log-report/environment -f /tmp/tmpex91s2po/log-report__RzgrPcc__env-docker-compose-resources.json -f /usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-build.yaml -f /tmp/tmpr80awcd4/docker-compose-mounts.json -f /usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-egress-control.yaml -f /tmp/tmpck0soq9e/docker-compose-egress-control-services.json build. Return code: 1. Stdout: #1 [internal] load local bake definitions
+#1 reading from stdin 577B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile:
+#2 transferring dockerfile: 1.00kB done
+#2 WARN: InvalidDefaultArgInFrom: Default value for ARG python:3.12-slim@sha256:REPLACE_WITH_RESOLVED_DIGEST results in empty or invalid base image name (line 13)
+#2 DONE 0.0s
+Dockerfile:13
+
+--------------------
+
+  11 |     # then replace the placeholder line with the real
+
+  12 |     # python:3.12-slim@sha256:<digest> value it prints.
+
+  13 | >>> FROM python:3.12-slim@sha256:REPLACE_WITH_RESOLVED_DIGEST
+
+  14 |     
+
+  15 |     RUN pip install --no-cache-dir pytest==8.4.1 pytest-json-ctrf==0.3.5
+
+--------------------
+
+failed to solve: failed to parse stage name "python:3.12-slim@sha256:REPLACE_WITH_RESOLVED_DIGEST": invalid reference format
+
+. Stderr: None. 
+Collecting main service artifacts
+Failed to download artifact '/app/report.json' from service 'main' (best-effort)
+Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/trial/trial.py", line 350, in run
+    await self._prepare()
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/trial/trial.py", line 379, in _prepare
+    await self._setup_agent_environment()
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/trial/trial.py", line 1097, in _setup_agent_environment
+    await self._start_agent_environment()
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/trial/trial.py", line 1103, in _start_agent_environment
+    await asyncio.wait_for(
+  File "/usr/local/python/3.12.1/lib/python3.12/asyncio/tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/environments/docker/docker.py", line 865, in start
+    await self._run_docker_compose_command(["build"])
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/environments/docker/docker.py", line 631, in _run_docker_compose_command
+    raise RuntimeError(
+RuntimeError: Docker compose command failed for environment log-report. Command: docker compose --project-name log-report__rzgrpcc__env --project-directory /workspaces/Project-Dynamo/log-report/environment -f /tmp/tmpex91s2po/log-report__RzgrPcc__env-docker-compose-resources.json -f /usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-build.yaml -f /tmp/tmpr80awcd4/docker-compose-mounts.json -f /usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-egress-control.yaml -f /tmp/tmpck0soq9e/docker-compose-egress-control-services.json build. Return code: 1. Stdout: #1 [internal] load local bake definitions
+#1 reading from stdin 577B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile:
+#2 transferring dockerfile: 1.00kB done
+#2 WARN: InvalidDefaultArgInFrom: Default value for ARG python:3.12-slim@sha256:REPLACE_WITH_RESOLVED_DIGEST results in empty or invalid base image name (line 13)
+#2 DONE 0.0s
+Dockerfile:13
+
+--------------------
+
+  11 |     # then replace the placeholder line with the real
+
+  12 |     # python:3.12-slim@sha256:<digest> value it prints.
+
+  13 | >>> FROM python:3.12-slim@sha256:REPLACE_WITH_RESOLVED_DIGEST
+
+  14 |     
+
+  15 |     RUN pip install --no-cache-dir pytest==8.4.1 pytest-json-ctrf==0.3.5
+
+--------------------
+
+failed to solve: failed to parse stage name "python:3.12-slim@sha256:REPLACE_WITH_RESOLVED_DIGEST": invalid reference format
+
+. Stderr: None. 
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/trial/artifact_handler.py", line 330, in _download_artifact
+    await source_env.service_download_file(
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/environments/docker/docker.py", line 1025, in service_download_file
+    await self.download_file(source_path, target_path)
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/environments/docker/docker.py", line 1010, in download_file
+    await self._platform.download_file(source_path, target_path)
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/environments/docker/docker_unix.py", line 185, in download_file
+    await self._env._run_docker_compose_command(
+  File "/usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/environments/docker/docker.py", line 631, in _run_docker_compose_command
+    raise RuntimeError(
+RuntimeError: Docker compose command failed for environment log-report. Command: docker compose --project-name log-report__rzgrpcc__env --project-directory /workspaces/Project-Dynamo/log-report/environment -f /tmp/tmpex91s2po/log-report__RzgrPcc__env-docker-compose-resources.json -f /usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-build.yaml -f /tmp/tmpr80awcd4/docker-compose-mounts.json -f /usr/local/python/3.12.1/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-egress-control.yaml -f /tmp/tmpck0soq9e/docker-compose-egress-control-services.json cp main:/app/report.json jobs/2026-07-17__00-49-42/log-report__RzgrPcc/artifacts/app/report.json. Return code: 1. Stdout: no container found for service "main"
+. Stderr: None. 
+Not retrying trial because the maximum number of retries has been reached
